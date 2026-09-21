@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>ATLAS Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #F4F2EC;
+    --bg-elevated: #FAF8F4;
+    --card: #FFFFFF;
+    --border: #DCD7CC;
+    --border-strong: #C4BEB0;
+    --text: #1E1C19;
+    --text-dim: #57534B;
+    --text-faint: #9A948A;
+    --accent: #B3452A;
+    --accent-soft: rgba(179,69,42,0.10);
+    --bronze: #8C651F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D0D0E;
+      --bg-elevated: #141415;
+      --card: #181715;
+      --border: #2A2825;
+      --border-strong: #38352F;
+      --text: #F0EEE9;
+      --text-dim: #A8A49B;
+      --text-faint: #6A665D;
+      --accent: #C0573B;
+      --accent-soft: rgba(192,87,59,0.14);
+      --bronze: #C08A3E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D0D0E;
+    --bg-elevated: #141415;
+    --card: #181715;
+    --border: #2A2825;
+    --border-strong: #38352F;
+    --text: #F0EEE9;
+    --text-dim: #A8A49B;
+    --text-faint: #6A665D;
+    --accent: #C0573B;
+    --accent-soft: rgba(192,87,59,0.14);
+    --bronze: #C08A3E;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding-inline: 20px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; }
+  h1, h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding-block: 40px 80px; }
+
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .doc-meta { font-size: 13px; color: var(--text-faint); }
+
+  h1.title { font-size: clamp(30px, 6vw, 40px); font-weight: 600; margin: 0 0 6px; }
+  .subtitle { color: var(--text-dim); font-size: 15px; margin: 0 0 30px; max-width: 60ch; }
+
+  nav.toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 40px;
+  }
+  nav.toc .toc-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+    display: block;
+  }
+  nav.toc ol { margin: 0; padding-left: 1.3em; columns: 2; column-gap: 24px; }
+  nav.toc li { margin-bottom: 6px; font-size: 13.5px; }
+  nav.toc a { color: var(--text-dim); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); }
+  @media (max-width: 480px) { nav.toc ol { columns: 1; } }
+
+  section { margin-bottom: 34px; scroll-margin-top: 20px; }
+  h2.section-title {
+    font-size: 21px;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 12px;
+  }
+  h2.section-title .num {
+    color: var(--accent);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  p { margin: 0 0 14px; color: var(--text); font-size: 15.5px; max-width: 65ch; }
+  ul { margin: 0 0 14px; padding-left: 1.3em; max-width: 65ch; }
+  li { margin-bottom: 8px; font-size: 15.5px; }
+  strong { font-weight: 600; }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 18px;
+    font-size: 14px;
+  }
+  table.data-table th, table.data-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.data-table th {
+    color: var(--text-faint);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .table-wrap { overflow-x: auto; margin-bottom: 18px; }
+
+  .callout {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .callout strong { color: var(--text); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px;
+    padding-top: 24px;
+    color: var(--text-faint);
+    font-size: 13px;
+  }
+  footer a { color: var(--text-dim); }
+</style>
+
+
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <span class="wordmark">Atlas</span>
+    <span class="doc-meta">Last updated 21 September 2026</span>
+  </div>
+
+  <h1 class="title">Privacy Policy</h1>
+  <p class="subtitle">
+    This explains what ATLAS collects, why, and who it's shared with — written to match
+    what the app actually does, not a generic template.
+  </p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="toc-label">On this page</span>
+    <ol>
+      <li><a href="#who-we-are">Who we are</a></li>
+      <li><a href="#what-we-collect">Information we collect</a></li>
+      <li><a href="#how-we-use">How we use it</a></li>
+      <li><a href="#third-parties">Who we share it with</a></li>
+      <li><a href="#storage">Storage &amp; retention</a></li>
+      <li><a href="#your-rights">Your rights &amp; choices</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#transfers">International transfers</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <section id="who-we-are">
+    <h2 class="section-title"><span class="num">01</span>Who we are</h2>
+    <p>
+      ATLAS is a strength training app — workout logging, recovery tracking, and optional
+      AI-assisted planning and coaching. It's built and operated by an independent developer,
+      not a company with a dedicated privacy team, and this policy is written to be exactly as
+      accurate as that reality: no data broker relationships, no ad network, no data sold to
+      anyone, ever.
+    </p>
+    <p>
+      Any question about this policy, or a request about your own data, goes to
+      <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a>.
+    </p>
+  </section>
+
+  <section id="what-we-collect">
+    <h2 class="section-title"><span class="num">02</span>Information we collect</h2>
+    <p>ATLAS is local-first: everything you log lives on your device whether or not you ever create an account. An account only adds cloud backup and a couple of optional social features. Here's exactly what exists, and when:</p>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <tr><th>Category</th><th>What it includes</th><th>When it's collected</th></tr>
+        <tr>
+          <td>Account information</td>
+          <td>Email address and password (or, if you use Sign in with Apple, the name and email Apple chooses to share — Apple lets you hide your real email behind a relay address), plus a username and display name you pick.</td>
+          <td>Only if you create an account. ATLAS works fully without one.</td>
+        </tr>
+        <tr>
+          <td>Training data</td>
+          <td>Workouts, sets, reps, weights, RPE, routines, custom exercises, and bodyweight entries you log.</td>
+          <td>Always, stored on-device. Backed up to our servers only if you're signed in.</td>
+        </tr>
+        <tr>
+          <td>Purchase &amp; subscription status</td>
+          <td>Whether you're subscribed, which plan, and renewal status — not your card number, which ATLAS never sees.</td>
+          <td>When you subscribe, via Apple/Google and RevenueCat.</td>
+        </tr>
+        <tr>
+          <td>AI feature content</td>
+          <td>Whatever you type to the AI Coach, and any text or photo you submit to Import Workouts or the AI Planner, so it can generate a plan or a response.</td>
+          <td>Only when you actively use those specific features.</td>
+        </tr>
+        <tr>
+          <td>Device &amp; diagnostic data</td>
+          <td>A random, anonymous per-install identifier (not tied to your name or email) used to rate-limit AI features fairly; crash reports and performance data if the app errors.</td>
+          <td>Automatically, for app stability and abuse prevention.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>What ATLAS does not collect:</strong> your location, HealthKit or wearable data,
+      contacts, browsing history, or anything for advertising purposes. There are no ads and no
+      ad SDKs in this app.
+    </div>
+
+    <div class="callout">
+      <strong>Health-related notes:</strong> the injuries / things-to-avoid field, and anything
+      you tell the Coach about pain or soreness, can reveal information about your health. It's
+      optional, it's only sent to the AI provider when you choose to generate a plan or message
+      the Coach, and you can clear or edit it at any time. By entering it and using those
+      features, you're explicitly consenting to it being processed for that purpose. ATLAS
+      doesn't use it for anything else.
+    </div>
+  </section>
+
+  <section id="how-we-use">
+    <h2 class="section-title"><span class="num">03</span>How we use it</h2>
+    <ul>
+      <li><strong>To run the app:</strong> your training data drives the recovery map, insights, and progress charts — all computed either on your device or from your own backed-up data.</li>
+      <li><strong>To sync across devices:</strong> if you're signed in, your logs, routines, and bodyweight history back up so switching phones doesn't lose your history.</li>
+      <li><strong>To power AI features:</strong> the AI Planner, AI Coach, and Import Workouts send the relevant text/photo and a summary of your recent training to our servers, which use a third-party AI provider to generate the plan, answer, or parsed workout — see Section 4.</li>
+      <li><strong>To manage your subscription:</strong> so Premium features unlock correctly and stay unlocked across devices.</li>
+      <li><strong>To fix bugs:</strong> crash and error reports help us find and fix problems — they're not used for anything else.</li>
+      <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting and abuse prevention rest on our legitimate interest in a stable, fair service; and the health-related notes above are processed on your explicit consent, which you can withdraw by clearing the field or deleting your account.</li>
+      <li><strong>To prevent abuse:</strong> the anonymous device identifier stops one install from burning through the free AI quota in a way that would make it unsustainable to offer for free.</li>
+    </ul>
+  </section>
+
+  <section id="third-parties">
+    <h2 class="section-title"><span class="num">04</span>Who we share it with</h2>
+    <p>ATLAS relies on a small number of infrastructure providers to function. None of them are permitted to use your data for their own purposes — they process it only to provide the service ATLAS uses them for.</p>
+    <ul>
+      <li><strong>Supabase</strong> — hosts the database and handles account sign-in for anyone who creates an account.</li>
+      <li><strong>RevenueCat</strong> — manages subscription status across Apple and Google's stores.</li>
+      <li><strong>Apple &amp; Google</strong> — process all payments directly; ATLAS never sees or stores your payment details.</li>
+      <li><strong>Sentry</strong> — receives crash and error diagnostics so bugs can be found and fixed.</li>
+      <li><strong>Anthropic</strong> — the AI provider (Claude models) behind the AI Planner, AI Coach and Import Workouts. It receives the specific content of your request, a summary of your recent training, and any injury notes, solely to generate the response you asked for.</li>
+      <li><strong>Render</strong> — hosts ATLAS's backend, which relays those AI requests to Anthropic.</li>
+    </ul>
+    <p>We don't sell your data, and we don't share it with anyone for their marketing or advertising purposes.</p>
+  </section>
+
+  <section id="storage">
+    <h2 class="section-title"><span class="num">05</span>Storage &amp; retention</h2>
+    <p>
+      Your training data lives locally on your device by default. If you sign in, a copy is also
+      kept on our servers for as long as your account exists, so a lost or replaced phone doesn't
+      mean losing your history. If you never create an account, nothing you log ever leaves your
+      device except what a specific AI feature needs to process your request in the moment.
+    </p>
+  </section>
+
+  <section id="your-rights">
+    <h2 class="section-title"><span class="num">06</span>Your rights &amp; choices</h2>
+    <ul>
+      <li><strong>Export:</strong> Premium includes a full CSV export of your training history at any time, from Progress → Your Data.</li>
+      <li><strong>Access or correction:</strong> email us and we'll confirm exactly what's on file for your account.</li>
+      <li><strong>Deletion:</strong> in the app, go to Profile → Friends &amp; Groups → Delete Account to permanently delete your account and all associated cloud data, immediately, with no email needed. You can also email <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a> from your account's email address. Data that only ever existed on your device is deleted the moment you delete the app.</li>
+      <li><strong>Portability:</strong> the CSV export above is a complete, usable copy of your own data.</li>
+    </ul>
+    <p>
+      If you're in the EU or UK, these are your rights under GDPR/UK GDPR; if you're a California
+      resident, similar rights apply under the CCPA. We honor requests from anyone, regardless of
+      where you live.
+    </p>
+  </section>
+
+  <section id="children">
+    <h2 class="section-title"><span class="num">07</span>Children's privacy</h2>
+    <p>
+      ATLAS isn't directed at children, and we don't knowingly collect personal information from
+      anyone under 13 (or the minimum age set by local law where higher). If you believe a child
+      has created an account, contact us and we'll remove it.
+    </p>
+  </section>
+
+  <section id="transfers">
+    <h2 class="section-title"><span class="num">08</span>International transfers</h2>
+    <p>
+      Our infrastructure providers may process data outside your own country, including in the
+      United States. Where that applies to EU/UK data, we rely on the standard contractual
+      safeguards those providers offer for exactly this purpose.
+    </p>
+  </section>
+
+  <section id="security">
+    <h2 class="section-title"><span class="num">09</span>Security</h2>
+    <p>
+      Data in transit is encrypted, and account passwords are never stored in plain text. No
+      method of transmission or storage is perfectly secure, but there's no known incident
+      affecting ATLAS user data, and we'll tell you directly if that ever changes.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2 class="section-title"><span class="num">10</span>Changes to this policy</h2>
+    <p>
+      If this policy changes in a way that matters — a new category of data, a new third party —
+      we'll update the date at the top of this page and, for anything significant, say so inside
+      the app.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title"><span class="num">11</span>Contact us</h2>
+    <p>
+      Questions, requests, or concerns about any of the above:
+      <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a>
+    </p>
+  </section>
+
+  <footer>
+    ATLAS Privacy Policy · Effective 21 September 2026 · See also the
+    <a href="terms.html">Terms of Use</a>
+  </footer>
+</div>
+</body>
+</html>

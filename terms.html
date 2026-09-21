@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>ATLAS Terms of Use</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #F4F2EC;
+    --bg-elevated: #FAF8F4;
+    --card: #FFFFFF;
+    --border: #DCD7CC;
+    --border-strong: #C4BEB0;
+    --text: #1E1C19;
+    --text-dim: #57534B;
+    --text-faint: #9A948A;
+    --accent: #B3452A;
+    --accent-soft: rgba(179,69,42,0.10);
+    --bronze: #8C651F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D0D0E;
+      --bg-elevated: #141415;
+      --card: #181715;
+      --border: #2A2825;
+      --border-strong: #38352F;
+      --text: #F0EEE9;
+      --text-dim: #A8A49B;
+      --text-faint: #6A665D;
+      --accent: #C0573B;
+      --accent-soft: rgba(192,87,59,0.14);
+      --bronze: #C08A3E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D0D0E;
+    --bg-elevated: #141415;
+    --card: #181715;
+    --border: #2A2825;
+    --border-strong: #38352F;
+    --text: #F0EEE9;
+    --text-dim: #A8A49B;
+    --text-faint: #6A665D;
+    --accent: #C0573B;
+    --accent-soft: rgba(192,87,59,0.14);
+    --bronze: #C08A3E;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding-inline: 20px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; }
+  h1, h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding-block: 40px 80px; }
+
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .doc-meta { font-size: 13px; color: var(--text-faint); }
+
+  h1.title { font-size: clamp(30px, 6vw, 40px); font-weight: 600; margin: 0 0 6px; }
+  .subtitle { color: var(--text-dim); font-size: 15px; margin: 0 0 30px; max-width: 60ch; }
+
+  nav.toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 40px;
+  }
+  nav.toc .toc-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+    display: block;
+  }
+  nav.toc ol { margin: 0; padding-left: 1.3em; columns: 2; column-gap: 24px; }
+  nav.toc li { margin-bottom: 6px; font-size: 13.5px; }
+  nav.toc a { color: var(--text-dim); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); }
+  @media (max-width: 480px) { nav.toc ol { columns: 1; } }
+
+  section { margin-bottom: 34px; scroll-margin-top: 20px; }
+  h2.section-title {
+    font-size: 21px;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 12px;
+  }
+  h2.section-title .num {
+    color: var(--accent);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  p { margin: 0 0 14px; color: var(--text); font-size: 15.5px; max-width: 65ch; }
+  ul { margin: 0 0 14px; padding-left: 1.3em; max-width: 65ch; }
+  li { margin-bottom: 8px; font-size: 15.5px; }
+  strong { font-weight: 600; }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 18px;
+    font-size: 14px;
+  }
+  table.data-table th, table.data-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.data-table th {
+    color: var(--text-faint);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .table-wrap { overflow-x: auto; margin-bottom: 18px; }
+
+  .callout {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .callout strong { color: var(--text); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px;
+    padding-top: 24px;
+    color: var(--text-faint);
+    font-size: 13px;
+  }
+  footer a { color: var(--text-dim); }
+</style>
+
+
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <span class="wordmark">Atlas</span>
+    <span class="doc-meta">Last updated 15 September 2026</span>
+  </div>
+
+  <h1 class="title">Terms of Use</h1>
+  <p class="subtitle">
+    The agreement between you and ATLAS for using the app — plain-language where possible,
+    precise where it has to be.
+  </p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="toc-label">On this page</span>
+    <ol>
+      <li><a href="#acceptance">Acceptance of terms</a></li>
+      <li><a href="#service">The service</a></li>
+      <li><a href="#accounts">Eligibility &amp; accounts</a></li>
+      <li><a href="#subscriptions">Subscriptions &amp; billing</a></li>
+      <li><a href="#health">Health &amp; fitness disclaimer</a></li>
+      <li><a href="#ai">AI features</a></li>
+      <li><a href="#content">Your content</a></li>
+      <li><a href="#conduct">Acceptable use</a></li>
+      <li><a href="#ip">Intellectual property</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#warranty">Disclaimer of warranties</a></li>
+      <li><a href="#liability">Limitation of liability</a></li>
+      <li><a href="#apple">Apple-specific terms</a></li>
+      <li><a href="#law">Governing law</a></li>
+      <li><a href="#changes">Changes to these terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section id="acceptance">
+    <h2 class="section-title"><span class="num">01</span>Acceptance of terms</h2>
+    <p>
+      By downloading, installing, or using ATLAS, you agree to these Terms of Use. If you don't
+      agree, don't use the app. These terms apply alongside the
+      <a href="privacy.html">Privacy Policy</a>, which explains what data ATLAS
+      collects and why.
+    </p>
+  </section>
+
+  <section id="service">
+    <h2 class="section-title"><span class="num">02</span>The service</h2>
+    <p>
+      ATLAS is a strength training app: workout logging, recovery tracking, progress analytics,
+      and optional AI-assisted workout planning, coaching, and plan import. Core logging works
+      fully offline and stays free forever; some features (listed in-app under Premium) require a
+      paid subscription or one-time purchase.
+    </p>
+  </section>
+
+  <section id="accounts">
+    <h2 class="section-title"><span class="num">03</span>Eligibility &amp; accounts</h2>
+    <p>
+      You don't need an account to use ATLAS's core features. Creating one adds cloud backup and
+      social features, and requires a valid email address (or Sign in with Apple). You're
+      responsible for keeping your account credentials secure and for anything that happens under
+      your account.
+    </p>
+  </section>
+
+  <section id="subscriptions">
+    <h2 class="section-title"><span class="num">04</span>Subscriptions &amp; billing</h2>
+    <p>ATLAS Premium is offered on the following plans, shown with current pricing at time of purchase inside the app:</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tr><th>Plan</th><th>Billing</th><th>Renews</th></tr>
+        <tr><td>Monthly</td><td>€4.99 / month</td><td>Automatically, until cancelled</td></tr>
+        <tr><td>Yearly</td><td>€29.99 / year</td><td>Automatically, until cancelled</td></tr>
+        <tr><td>Lifetime</td><td>€99.99 one-time</td><td>Never — a single purchase</td></tr>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Payment</strong> is charged to your Apple ID or Google Play account at confirmation of purchase.</li>
+      <li><strong>Auto-renewal:</strong> Monthly and Yearly subscriptions renew automatically unless cancelled at least 24 hours before the current period ends. Your account will be charged for renewal within 24 hours prior to the end of the current period.</li>
+      <li><strong>Cancelling:</strong> manage or cancel any time in your device's account settings — Settings → [your name] → Subscriptions on iOS, or Google Play → Subscriptions on Android. Cancelling stops future renewals; you keep access until the current paid period ends.</li>
+      <li><strong>Free tier:</strong> there's no trial that expires and no usage cap on the free tier — it's permanent, not a time-limited preview.</li>
+      <li><strong>Refunds</strong> are handled by Apple or Google under their own refund policies, not by us directly, since they process the payment.</li>
+      <li><strong>Beta codes,</strong> where issued, grant Premium access at our discretion and can be revoked for misuse.</li>
+    </ul>
+  </section>
+
+  <section id="health">
+    <h2 class="section-title"><span class="num">05</span>Health &amp; fitness disclaimer</h2>
+    <div class="callout">
+      <strong>ATLAS is not a medical device and doesn't provide medical advice.</strong>
+      Consult a doctor before beginning any exercise program, especially if you have an existing
+      condition, injury, or health concern.
+    </div>
+    <p>
+      Strength training carries an inherent risk of injury. Weight, rep, and progression
+      suggestions — including anything from the AI Planner or AI Coach — are general guidance,
+      not a personalized medical or clinical recommendation. You're responsible for using proper
+      form, working within your own limits, and stopping if something hurts. Use of the app and
+      any exercise you perform is at your own risk.
+    </p>
+  </section>
+
+  <section id="ai">
+    <h2 class="section-title"><span class="num">06</span>AI features</h2>
+    <p>
+      The AI Planner, AI Coach, and Import Workouts use an AI model to generate plans, answers,
+      and parsed workouts from what you provide. These outputs can be wrong, generic, or not
+      suited to your situation — review any suggested change before applying it (the app always
+      shows you the proposed change before it takes effect). AI outputs are not professional
+      fitness or medical advice, and we're not liable for a decision you make based on them.
+    </p>
+  </section>
+
+  <section id="content">
+    <h2 class="section-title"><span class="num">07</span>Your content</h2>
+    <p>
+      You own the training data, custom exercises, and anything else you create in ATLAS. By
+      submitting a photo or text to Import Workouts, or a message to AI Coach, you grant us a
+      license to process that specific content solely to generate the response you requested — we
+      don't use it to train AI models or for any other purpose, and it isn't shared beyond what
+      Section 4 of the Privacy Policy describes.
+    </p>
+  </section>
+
+  <section id="conduct">
+    <h2 class="section-title"><span class="num">08</span>Acceptable use</h2>
+    <p>Don't use ATLAS to:</p>
+    <ul>
+      <li>Attempt to bypass, exploit, or abuse the free-tier AI quota or subscription checks.</li>
+      <li>Reverse-engineer, decompile, or extract the app's source beyond what your platform's own laws permit.</li>
+      <li>Upload content through Import Workouts or AI Coach that's unlawful, abusive, or infringes someone else's rights.</li>
+      <li>Interfere with the app's servers or other users' access to them.</li>
+    </ul>
+  </section>
+
+  <section id="ip">
+    <h2 class="section-title"><span class="num">09</span>Intellectual property</h2>
+    <p>
+      ATLAS's design, code, exercise library, and branding belong to us. These terms don't
+      transfer any of that to you — you're licensed to use the app, not to copy or redistribute
+      it.
+    </p>
+  </section>
+
+  <section id="termination">
+    <h2 class="section-title"><span class="num">10</span>Termination</h2>
+    <p>
+      You can stop using ATLAS and delete your account at any time (see the Privacy Policy for
+      how). We can suspend or terminate access for a violation of Section 8, though we'll always
+      try to tell you why first unless that would be unsafe or pointless.
+    </p>
+  </section>
+
+  <section id="warranty">
+    <h2 class="section-title"><span class="num">11</span>Disclaimer of warranties</h2>
+    <p>
+      ATLAS is provided "as is," without warranties of any kind, express or implied, including
+      merchantability, fitness for a particular purpose, and non-infringement. We don't guarantee
+      the app will be error-free, uninterrupted, or that AI-generated content will be accurate.
+    </p>
+  </section>
+
+  <section id="liability">
+    <h2 class="section-title"><span class="num">12</span>Limitation of liability</h2>
+    <p>
+      To the maximum extent the law allows, we're not liable for indirect, incidental, or
+      consequential damages arising from your use of ATLAS, including any injury sustained while
+      exercising. Nothing here limits liability that can't legally be limited, including — for
+      consumers in the EU/UK — your statutory consumer rights, which these terms don't override.
+    </p>
+  </section>
+
+  <section id="apple">
+    <h2 class="section-title"><span class="num">13</span>Apple-specific terms</h2>
+    <p>
+      If you downloaded ATLAS from the Apple App Store, this section applies in addition to the
+      rest of these terms:
+    </p>
+    <ul>
+      <li>This agreement is between you and us only, not Apple, and Apple has no obligation to provide any maintenance or support for the app.</li>
+      <li>Apple is not responsible for the app or its content, or for any product liability, legal compliance, or intellectual property claim related to it.</li>
+      <li>In the event of any failure of the app to conform to a warranty, you may notify Apple, and Apple will refund the purchase price, if any — beyond that, Apple has no other warranty obligation.</li>
+      <li>Apple is a third-party beneficiary of these terms and may enforce them against you.</li>
+    </ul>
+  </section>
+
+  <section id="law">
+    <h2 class="section-title"><span class="num">14</span>Governing law</h2>
+    <p>
+      These terms are governed by the laws of Ireland, without regard to conflict-of-law rules.
+      If you're a consumer in the EU or UK, this doesn't take away the mandatory protections your
+      own country's consumer law gives you.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2 class="section-title"><span class="num">15</span>Changes to these terms</h2>
+    <p>
+      We may update these terms as the app changes. For anything material — pricing, what's
+      included in Premium, your rights — we'll update the date above and flag it inside the app.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title"><span class="num">16</span>Contact</h2>
+    <p>
+      Questions about these terms:
+      <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a>
+    </p>
+  </section>
+
+  <footer>
+    ATLAS Terms of Use · Effective 15 September 2026 · See also the
+    <a href="privacy.html">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>
