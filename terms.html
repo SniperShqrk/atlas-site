@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>ATLAS Terms of Use</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
   :root {
     --bg: #F4F2EC;
@@ -16,9 +14,9 @@
     --border-strong: #C4BEB0;
     --text: #1E1C19;
     --text-dim: #57534B;
-    --text-faint: #9A948A;
-    --accent: #B3452A;
-    --accent-soft: rgba(179,69,42,0.10);
+    --text-faint: #67625A;
+    --accent: #A03A21;
+    --accent-soft: rgba(160,58,33,0.10);
     --bronze: #8C651F;
   }
   @media (prefers-color-scheme: dark) {
@@ -30,9 +28,9 @@
       --border-strong: #38352F;
       --text: #F0EEE9;
       --text-dim: #A8A49B;
-      --text-faint: #6A665D;
-      --accent: #C0573B;
-      --accent-soft: rgba(192,87,59,0.14);
+      --text-faint: #A09C93;
+      --accent: #DE7458;
+      --accent-soft: rgba(222,116,88,0.14);
       --bronze: #C08A3E;
     }
   }
@@ -44,24 +42,31 @@
     --border-strong: #38352F;
     --text: #F0EEE9;
     --text-dim: #A8A49B;
-    --text-faint: #6A665D;
-    --accent: #C0573B;
-    --accent-soft: rgba(192,87,59,0.14);
+    --text-faint: #A09C93;
+    --accent: #DE7458;
+    --accent-soft: rgba(222,116,88,0.14);
     --bronze: #C08A3E;
   }
 
   * { box-sizing: border-box; }
+  :root{ --_skipbg:#1E1C19; --_skipfg:#F4F2EC; --_focus:var(--accent); }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --_skipbg:#F0EEE9; --_skipfg:#0D0D0E; } }
+  .skip{ position:absolute; left:-9999px; top:8px; z-index:100; padding:10px 14px; background:var(--_skipbg); color:var(--_skipfg); text-decoration:none; border-radius:6px; font:600 14px system-ui,sans-serif; }
+  .skip:focus{ left:8px; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--_focus); outline-offset:3px; border-radius:4px; }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none !important; animation:none !important; scroll-behavior:auto !important; } }
+
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     padding-inline: 20px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
   a { color: var(--accent); text-decoration-thickness: 1px; }
   h1, h2 {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: Georgia, 'Times New Roman', serif;
     text-wrap: balance;
     letter-spacing: -0.01em;
   }
@@ -78,7 +83,7 @@
     margin-bottom: 36px;
   }
   .wordmark {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: Georgia, 'Times New Roman', serif;
     font-weight: 700;
     font-size: 15px;
     letter-spacing: 0.14em;
@@ -122,7 +127,7 @@
   }
   h2.section-title .num {
     color: var(--accent);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: Georgia, 'Times New Roman', serif;
     font-weight: 600;
     font-size: 16px;
     font-variant-numeric: tabular-nums;
@@ -178,12 +183,14 @@
 
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
-  <div class="masthead">
+  <header class="masthead">
     <span class="wordmark">Atlas</span>
     <span class="doc-meta">Last updated 15 September 2026</span>
-  </div>
+  </header>
 
+  <main id="main">
   <h1 class="title">Terms of Use</h1>
   <p class="subtitle">
     The agreement between you and ATLAS for using the app — plain-language where possible,
@@ -387,6 +394,8 @@
       <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a>
     </p>
   </section>
+
+  </main>
 
   <footer>
     ATLAS Terms of Use · Effective 15 September 2026 · See also the
