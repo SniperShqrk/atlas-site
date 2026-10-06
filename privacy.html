@@ -187,7 +187,7 @@
 <div class="wrap">
   <header class="masthead">
     <span class="wordmark">Atlas</span>
-    <span class="doc-meta">Last updated 21 September 2026</span>
+    <span class="doc-meta">Last updated 6 October 2026</span>
   </header>
 
   <main id="main">
@@ -258,8 +258,13 @@
         </tr>
         <tr>
           <td>Device &amp; diagnostic data</td>
-          <td>A random, anonymous per-install identifier (not tied to your name or email) used to rate-limit AI features fairly; crash reports and performance data if the app errors.</td>
+          <td>A random, anonymous per-install identifier (not tied to your name or email), used to rate-limit AI features fairly and to count how the ATLAS Pro screen is used; crash reports and performance data if the app errors.</td>
           <td>Automatically, for app stability and abuse prevention.</td>
+        </tr>
+        <tr>
+          <td>ATLAS Pro screen usage</td>
+          <td>Which version of the ATLAS Pro screen you saw, the plan you picked, and whether you bought, restored or closed it, with the per-install identifier and, if you're signed in, your account id. If you delete your account, these records lose your account id.</td>
+          <td>When the ATLAS Pro screen opens. Stored with Supabase.</td>
         </tr>
       </table>
     </div>
@@ -288,7 +293,8 @@
       <li><strong>To power AI features:</strong> the AI Planner, AI Coach, and Import Workouts send the relevant text/photo and a summary of your recent training to our servers, which use a third-party AI provider to generate the plan, answer, or parsed workout — see Section 4.</li>
       <li><strong>To manage your subscription:</strong> so Premium features unlock correctly and stay unlocked across devices.</li>
       <li><strong>To fix bugs:</strong> crash and error reports help us find and fix problems — they're not used for anything else.</li>
-      <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting and abuse prevention rest on our legitimate interest in a stable, fair service; and the health-related notes above are processed on your explicit consent, which you can withdraw by clearing the field or deleting your account.</li>
+      <li><strong>To improve the app:</strong> counts of how the ATLAS Pro screen is used show which version explains Pro most clearly. They are never sold or used for advertising.</li>
+      <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting, abuse prevention and counting how the ATLAS Pro screen is used rest on our legitimate interest in a stable, fair service and in improving the app; and the health-related notes above are processed on your explicit consent, which you can withdraw by clearing the field or deleting your account.</li>
       <li><strong>To prevent abuse:</strong> the anonymous device identifier stops one install from burning through the free AI quota in a way that would make it unsustainable to offer for free.</li>
     </ul>
   </section>
@@ -321,9 +327,9 @@
   <section id="your-rights">
     <h2 class="section-title"><span class="num">06</span>Your rights &amp; choices</h2>
     <ul>
-      <li><strong>Export:</strong> Premium includes a full CSV export of your training history at any time, from Progress → Your Data.</li>
+      <li><strong>Export:</strong> ATLAS includes a free, full CSV export of your training history at any time, from Progress → Your Data.</li>
       <li><strong>Access or correction:</strong> email us and we'll confirm exactly what's on file for your account.</li>
-      <li><strong>Deletion:</strong> in the app, go to Profile → Friends &amp; Groups → Delete Account to permanently delete your account and all associated cloud data, immediately, with no email needed. You can also email <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a> from your account's email address. Data that only ever existed on your device is deleted the moment you delete the app.</li>
+      <li><strong>Deletion:</strong> in the app, go to Profile → Friends &amp; Groups → Delete Account to permanently delete your account and all associated cloud data, immediately, with no email needed. The only exception is ATLAS Pro screen usage records, which are kept with your account id removed. You can also email <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a> from your account's email address. Data that only ever existed on your device is deleted the moment you delete the app.</li>
       <li><strong>Portability:</strong> the CSV export above is a complete, usable copy of your own data.</li>
     </ul>
     <p>
@@ -380,7 +386,7 @@
   </main>
 
   <footer>
-    ATLAS Privacy Policy · Effective 21 September 2026 · See also the
+    ATLAS Privacy Policy · Effective 6 October 2026 · See also the
     <a href="terms.html">Terms of Use</a>
   </footer>
 </div>
