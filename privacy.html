@@ -249,7 +249,7 @@
         <tr>
           <td>Purchase &amp; subscription status</td>
           <td>Whether you're subscribed, which plan, and renewal status — not your card number, which ATLAS never sees.</td>
-          <td>When you subscribe, via Apple/Google and RevenueCat.</td>
+          <td>When you subscribe, via Apple and RevenueCat.</td>
         </tr>
         <tr>
           <td>AI feature content</td>
@@ -262,9 +262,9 @@
           <td>Automatically, for app stability and abuse prevention.</td>
         </tr>
         <tr>
-          <td>ATLAS Pro screen usage</td>
-          <td>Which version of the ATLAS Pro screen you saw, the plan you picked, and whether you bought, restored or closed it, with the per-install identifier and, if you're signed in, your account id. If you delete your account, these records lose your account id.</td>
-          <td>When the ATLAS Pro screen opens. Stored with Supabase.</td>
+          <td>Onboarding &amp; ATLAS Pro screen usage</td>
+          <td>Which steps of the first-run setup you saw and whether you skipped them, which version of the setup and of the ATLAS Pro screen you saw, the plan you picked, and whether you bought, restored or closed it, with the per-install identifier and, if you're signed in, your account id. If you delete your account, these records lose your account id.</td>
+          <td>When the first-run setup or the ATLAS Pro screen opens. Stored with Supabase.</td>
         </tr>
       </table>
     </div>
@@ -276,12 +276,13 @@
     </div>
 
     <div class="callout">
-      <strong>Health-related notes:</strong> the injuries / things-to-avoid field, and anything
-      you tell the AI Coach about pain or soreness, can reveal information about your health. It's
-      optional, it's only sent to the AI provider when you choose to generate a plan or message
-      the AI Coach, and you can clear or edit it at any time. By entering it and using those
-      features, you're explicitly consenting to it being processed for that purpose. ATLAS
-      doesn't use it for anything else.
+      <strong>Health-related information.</strong> Some things you give ATLAS can reveal information about your health: the injuries and things-to-avoid notes in your profile, your body weight and body weight entries, your workouts, and anything you tell the AI Coach about pain or soreness. All of it is optional.
+      <br><br>
+      <strong>Where it goes.</strong> When you generate a plan, message the AI Coach or import a workout, ATLAS sends the relevant parts (your injury notes, your body weight if you have entered it, your goal and equipment, your recent workouts, and what you typed or photographed) to our server, which passes them to our AI provider, Anthropic, to produce the response. <strong>If you are signed in, your injury notes, body weight, body weight entries and workouts are also saved in our database (Supabase) as your backup and for sync across devices.</strong> Signed out, they stay on your device except for what an AI request needs.
+      <br><br>
+      <strong>Your consent.</strong> Before the first AI request, ATLAS asks you to agree to this, in a sheet that names what is sent and to whom. If you choose "Not now", nothing is sent and the feature does not run. Everything else in ATLAS, including logging, history and the recovery map, works without it. You can withdraw consent at any time in Profile → Privacy; ATLAS then stops sending and asks again the next time you use an AI feature. You can also clear the injury field or delete your account.
+      <br><br>
+      We do not use this information for advertising or for anything other than the purposes above.
     </div>
   </section>
 
@@ -294,7 +295,7 @@
       <li><strong>To manage your subscription:</strong> so Premium features unlock correctly and stay unlocked across devices.</li>
       <li><strong>To fix bugs:</strong> crash and error reports help us find and fix problems — they're not used for anything else.</li>
       <li><strong>To improve the app:</strong> counts of how the ATLAS Pro screen is used show which version explains Pro most clearly. They are never sold or used for advertising.</li>
-      <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting, abuse prevention and counting how the ATLAS Pro screen is used rest on our legitimate interest in a stable, fair service and in improving the app; and the health-related notes above are processed on your explicit consent, which you can withdraw by clearing the field or deleting your account.</li>
+      <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting, abuse prevention and counting how the ATLAS Pro screen is used rest on our legitimate interest in a stable, fair service and in improving the app; and the health-related information above is processed on your <strong>explicit consent</strong>, given in the app sheet and withdrawable in Profile → Privacy.</li>
       <li><strong>To prevent abuse:</strong> the anonymous device identifier stops one install from burning through the free AI quota in a way that would make it unsustainable to offer for free.</li>
     </ul>
   </section>
@@ -304,11 +305,13 @@
     <p>ATLAS relies on a small number of infrastructure providers to function. None of them are permitted to use your data for their own purposes — they process it only to provide the service ATLAS uses them for.</p>
     <ul>
       <li><strong>Supabase</strong> — hosts the database and handles account sign-in for anyone who creates an account.</li>
-      <li><strong>RevenueCat</strong> — manages subscription status across Apple and Google's stores.</li>
-      <li><strong>Apple &amp; Google</strong> — process all payments directly; ATLAS never sees or stores your payment details.</li>
-      <li><strong>Sentry</strong> — receives crash and error diagnostics so bugs can be found and fixed.</li>
-      <li><strong>Anthropic</strong> — the AI provider (Claude models) behind the AI Planner, AI Coach and Import Workouts. It receives the specific content of your request, a summary of your recent training, and any injury notes, solely to generate the response you asked for.</li>
-      <li><strong>Render</strong> — hosts ATLAS's backend, which relays those AI requests to Anthropic.</li>
+      <li><strong>Onboarding and ATLAS Pro screen usage events</strong>, stored in Supabase — to compare two versions of the first-run setup and the ATLAS Pro screen, ATLAS records which steps you saw, whether you skipped them, which version of the screen you saw, the plan you chose, and whether you bought, restored or closed it. Each record carries the random per-install identifier and, if you are signed in, your account id. It does not include your injury notes, body weight or anything you typed. You can stop this in Profile → Privacy (Share crash reports and anonymous usage).</li>
+      <li><strong>RevenueCat</strong> — manages subscription status. It receives your ATLAS account id (or, signed out, a random RevenueCat id) as the customer id, plus your purchase and subscription status. It does not receive your card details.</li>
+      <li><strong>Apple</strong> — processes all payments directly; ATLAS never sees or stores your payment details.</li>
+      <li><strong>Sentry</strong> — receives crash and error reports and light performance data. Reports are scrubbed in the app before they are sent: no request contents, no text you typed, no email, IP address or device name. On by default; you can turn it off in Profile → Privacy.</li>
+      <li><strong>Expo (Expo Application Services)</strong> — delivers app updates. When the app checks for an update, Expo receives your IP address, your device's operating system, the app version and the update it already has. It receives no training data.</li>
+      <li><strong>Anthropic</strong> — the AI provider (Claude models) behind the AI Planner, AI Coach and Import Workouts. It receives the specific content of your request, your goal and equipment, injury notes, body weight if provided, and a summary of your recent training, solely to generate the response you asked for. Anthropic processes this to answer the request, under its API terms. ATLAS does not send it your name or email.</li>
+      <li><strong>Render</strong> — hosts the ATLAS server that relays AI requests. It keeps a per-install counter for the daily AI limits and its logs include request IP addresses.</li>
       <li><strong>GitHub (Pages)</strong> — hosts this website (atlasfitness.xyz); like any web host it may log visitors' IP addresses. This website sets no cookies, runs no analytics or advertising trackers, and loads no third-party fonts or scripts, so it needs no cookie banner.</li>
     </ul>
     <p>We don't sell your data, and we don't share it with anyone for their marketing or advertising purposes.</p>
@@ -322,6 +325,16 @@
       mean losing your history. If you never create an account, nothing you log ever leaves your
       device except what a specific AI feature needs to process your request in the moment.
     </p>
+    <ul>
+      <li><strong>Your account and backup:</strong> kept while your account exists, and deleted when you delete your account.</li>
+      <li><strong>On your device:</strong> kept until you delete the app or sign out (signing out clears this device's copy).</li>
+      <li><strong>AI requests:</strong> ATLAS does not store what you send to or receive from the AI Coach, plans or import. The AI provider keeps API inputs and outputs for up to 30 days, then deletes them, except where a request is flagged for a policy violation (kept longer) or the law requires it.</li>
+      <li><strong>Crash reports (Sentry):</strong> up to 30 days, the free-plan default.</li>
+      <li><strong>Usage events (onboarding and ATLAS Pro screen):</strong> 12 months, then deleted. Records not tied to an account are kept as anonymous statistics.</li>
+      <li><strong>AI limit counters (Render):</strong> reset when the server restarts and are not kept long term.</li>
+      <li><strong>Update checks (Expo) and website logs (GitHub):</strong> kept per those providers' own retention.</li>
+      <li><strong>Backups:</strong> we do not keep separate database backups on our current plan; deleted data is removed from the live database when you delete your account.</li>
+    </ul>
   </section>
 
   <section id="your-rights">
@@ -329,7 +342,13 @@
     <ul>
       <li><strong>Export:</strong> ATLAS includes a free, full CSV export of your training history at any time, from Progress → Your Data.</li>
       <li><strong>Access or correction:</strong> email us and we'll confirm exactly what's on file for your account.</li>
-      <li><strong>Deletion:</strong> in the app, go to Profile → Delete account to permanently delete your account and all associated cloud data, immediately, with no email needed. The only exception is ATLAS Pro screen usage records, which are kept with your account id removed. You can also email <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a> from your account's email address. Data that only ever existed on your device is deleted the moment you delete the app.</li>
+      <li><strong>Deletion:</strong> in the app, go to Profile → Delete account. It permanently removes your account, profile, workouts, routines, custom exercises, body weight entries and training backup from our database, immediately. It also revokes ATLAS's Sign in with Apple access (if you used it) and deletes your RevenueCat customer record (your purchase history and customer id). Both are attempted first and, if either cannot be reached at that moment, the account is deleted anyway. Deleting your account does not cancel an active subscription; cancel it in your Apple ID settings. It does not remove:
+        <ul>
+          <li><strong>Crash reports already in Sentry.</strong> They contain no name, email or IP address and expire on Sentry's retention schedule above.</li>
+          <li><strong>Anonymous device usage events.</strong> Onboarding and ATLAS Pro screen records lose your account id when you delete your account, but stay under the random per-install identifier, which is not linked to your name or email. Deleting the app does not remove them; email us to have them deleted by device identifier.</li>
+          <li><strong>Records of a purchase kept by Apple.</strong></li>
+        </ul>
+        You can also email <a href="mailto:hugoksheehan@gmail.com">hugoksheehan@gmail.com</a> from your account's email address. Data that only ever existed on your device is deleted the moment you delete the app.</li>
       <li><strong>Portability:</strong> the CSV export above is a complete, usable copy of your own data.</li>
     </ul>
     <p>
@@ -342,9 +361,10 @@
   <section id="children">
     <h2 class="section-title"><span class="num">07</span>Children's privacy</h2>
     <p>
-      ATLAS isn't directed at children, and we don't knowingly collect personal information from
-      anyone under 13 (or the minimum age set by local law where higher). If you believe a child
-      has created an account, contact us and we'll remove it.
+      ATLAS is for people aged 16 and over. When you create an account (or continue with Apple),
+      ATLAS asks you to confirm "I'm 16 or older". We do not ask for your date of birth. ATLAS works
+      without an account, and we do not knowingly collect personal information from anyone under 16.
+      If you believe a younger person has created an account, contact us and we will delete it.
     </p>
   </section>
 
