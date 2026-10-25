@@ -287,3 +287,5 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .bd:not(.soon) img{box-shadow:none}
 .bd:focus-visible{border-radius:10px}
 @media (min-width:900px){.hero[class*=dh-] .badges{flex-direction:column;align-items:flex-start;gap:14px;max-width:none}.hero[class*=dh-] .bd{width:auto;height:56px}.dh-stack .badges{align-items:center}}
+/* desktop: the QR card sits in the middle of its column, the code in the middle of the card */
+@media (min-width:900px){.qr,.hero[class*=dh-] .qr{align-items:center;text-align:center;justify-self:center;margin-inline:auto}.qr p{text-align:center}}
