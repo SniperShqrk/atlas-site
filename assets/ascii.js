@@ -52,7 +52,7 @@ function drawAscii(cv){
   var s=cv.getAttribute('data-subj'),g=cv.getAttribute('data-glyph'),th=(cv.closest('[data-t]')||document.documentElement).getAttribute('data-t');
   var mode=cv.getAttribute('data-scroll')||'flicker',rend=cv.getAttribute('data-render')||'fade',tone=cv.getAttribute('data-tone')||'b',flow=cv.getAttribute('data-flow')==='1';
   var S=s==='chart'?chartSubj(+cv.getAttribute('data-cols')||64,+cv.getAttribute('data-rows')||18):s==='txt'?textSubj(cv.getAttribute('data-text'),+cv.getAttribute('data-cols')||40,cv.getAttribute('data-face')):s==='rule'?ruleSubj(+cv.getAttribute('data-cols')||48):SUBJ[s+(cv.getAttribute('data-detail')||'')]||SUBJ[s];
-  var W=cv.clientWidth;if(!W||!S)return;
+  var W=cv.clientWidth;if(!W||!S)return;cv._w=W;
   if(s==='body'&&W<560)S=SUBJ.bodyf;if(s==='temple'&&W<560)S=SUBJ.templef;if(s==='head'&&W<560)S=SUBJ.headf;if(s==='wordmark'&&W<560)S=SUBJ.mono;
   var cw=W/S.cols,chh=cw*1.9,H=Math.ceil(chh*S.rows),dpr=Math.min(2,window.devicePixelRatio||1);
   cv.style.height=H+'px';cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
@@ -122,7 +122,10 @@ function drawAscii(cv){
   var oldR=REG.indexOf(cv._reg);if(oldR>=0)REG.splice(oldR,1);if(!reduce&&(mode!=='none'||mouse!=='none')){cv._reg={cv:cv,paint:paint};REG.push(cv._reg)}
   cv._paint=paint;
   if(reduce){paint(2);return}
-  var t0=performance.now();(function f(now){var p=(now-t0)/1500;paint(p);if(p<1.25)requestAnimationFrame(f);else paint(2,JIT)})(t0);
+  if(cv._skip){cv._intro=false;paint(2);return}
+  cv._intro=true;x.clearRect(0,0,W,H);
+  function go(){var t0=performance.now();(function f(now){var p=(now-t0)/3600;paint(p);if(p<1.25)requestAnimationFrame(f);else{cv._intro=false;paint(2,JIT)}})(t0)}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{threshold:.12});io.observe(cv)}else go();
 }
 // flowing letters: the quote moves through the statue one letter every 160 ms, only while it is on screen
 setInterval(function(){if(document.hidden)return;FLOW.forEach(function(f){var r=f.cv.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)f.tick()})},160);
@@ -131,7 +134,7 @@ setInterval(function(){if(document.hidden)return;FLOW.forEach(function(f){var r=
   // one frame loop for scroll and pointer. The scroll speed is smoothed (fast to rise, slow to fall) and the pointer is eased toward its target
   function pump(){var tg=Math.min(.5,acc/42);acc=0;vel+=(tg-vel)*(tg>vel?.22:.065);if(vel<.008&&tg===0)vel=0;JIT=vel;
     var ez=.30-RP.t/15*.26;MX+=(TX-MX)*ez;MY+=(TY-MY)*ez;MV+=(MT-MV)*.12;var mActive=Math.abs(TX-MX)>.4||Math.abs(TY-MY)>.4||Math.abs(MT-MV)>.01;
-    REG.forEach(function(r){var b=r.cv.getBoundingClientRect();if(b.bottom>0&&b.top<innerHeight)r.paint(2,JIT)});
+    REG.forEach(function(r){var b=r.cv.getBoundingClientRect();if(!r.cv._intro&&b.bottom>0&&b.top<innerHeight)r.paint(2,JIT)});
     if(vel>0||mActive)requestAnimationFrame(pump);else on=false}
   function wake(){if(!on){on=true;requestAnimationFrame(pump)}}
   addEventListener('message',function(e){if(e.data&&e.data.atlasRep){for(var k in e.data.atlasRep)RP[k]=e.data.atlasRep[k]}});
@@ -141,7 +144,7 @@ setInterval(function(){if(document.hidden)return;FLOW.forEach(function(f){var r=
 // the QR code arrives as letters: they flicker in, then each dark module fills in behind its letter.
 // The settled code is solid dark modules with the letter engraved in bronze, so a phone camera reads it
 function drawQR(cv){if(typeof QRB==='undefined')return;var cs=getComputedStyle(cv),N=Math.round(Math.sqrt(QRB.length)),S=cv.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);if(!S)return;
-  var m=S/N,dpr=Math.min(2,window.devicePixelRatio||1);cv.style.height=S+'px';cv.width=cv.height=Math.round(S*dpr);
+  cv._w=cv.clientWidth;var m=S/N,dpr=Math.min(2,window.devicePixelRatio||1);cv.style.height=S+'px';cv.width=cv.height=Math.round(S*dpr);
   var x=cv.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);x.textAlign='center';x.textBaseline='middle';x.font='700 '+(m*1.02).toFixed(2)+'px Cardo,Georgia,serif';
   var T=TXT.stoic,mods=[],k=0;for(var i=0;i<QRB.length;i++)if(QRB[i]==='1')mods.push([i%N,Math.floor(i/N),T[k++%T.length],Math.random()]);
   function rnd(){return T[Math.floor(Math.random()*T.length)]}
@@ -155,7 +158,10 @@ function drawQR(cv){if(typeof QRB==='undefined')return;var cs=getComputedStyle(c
   var oldR=REG.indexOf(cv._reg);if(oldR>=0)REG.splice(oldR,1);
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||cv.hasAttribute('data-still')){paint(3);return}
   cv._reg={cv:cv,paint:paint};REG.push(cv._reg);
-  var t0=performance.now();(function f(now){var p=(now-t0)/1000*1.25/1.4;if(p<1.4){paint(p);requestAnimationFrame(f)}else paint(3,0)})(t0)}
+  if(cv._skip){paint(3,0);return}
+  cv._intro=true;x.clearRect(0,0,S,S);
+  function go(){var t0=performance.now();(function f(now){var p=(now-t0)/1000*.55;if(p<1.4){paint(p);requestAnimationFrame(f)}else{cv._intro=false;paint(3,0)}})(t0)}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{threshold:.2});io.observe(cv)}else go()}
 // the footer figure drawn three more ways from the same photo: halftone (dot size), stipple (dot placement), engraving (line thickness).
 // Ink is the canvas's CSS colour. Dots arrive in a scatter and react to the scroll like the statue's letters
 function drawArt(cv){if(typeof ART==='undefined')return;var kind=cv.getAttribute('data-art'),W=cv.clientWidth;if(!W)return;
@@ -197,5 +203,5 @@ function drawArt(cv){if(typeof ART==='undefined')return;var kind=cv.getAttribute
   function go(){var t0=performance.now();(function f(now){var p=(now-t0)/1000;if(p<1.4){paint(p);requestAnimationFrame(f)}else paint(3,0)})(t0)}
   if('IntersectionObserver' in window){x.clearRect(0,0,W,H);var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();go()}},{threshold:.15});io.observe(cv)}else go()}
 function drawAll(){document.querySelectorAll('canvas.ascii').forEach(drawAscii);document.querySelectorAll('canvas.qra').forEach(drawQR);document.querySelectorAll('canvas.art').forEach(drawArt)}
-(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(drawAll);
-var rz;addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){document.querySelectorAll('canvas.ascii').forEach(function(c){c.setAttribute('data-still','');drawAscii(c)});document.querySelectorAll('canvas.qra').forEach(function(c){c.setAttribute('data-still','');drawQR(c)});document.querySelectorAll('canvas.art').forEach(function(c){c.setAttribute('data-still','');drawArt(c)})},150)});
+Promise.race([document.fonts?Promise.all([document.fonts.load('700 20px Cardo'),document.fonts.load('400 20px Cardo'),document.fonts.load('400 20px Inter')]):Promise.resolve(),new Promise(function(r){setTimeout(r,1500)})]).then(drawAll);
+var rz;addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(function(){document.querySelectorAll('canvas.ascii').forEach(function(c){if(c._w===c.clientWidth)return;c._skip=true;drawAscii(c)});document.querySelectorAll('canvas.qra').forEach(function(c){if(c._w===c.clientWidth)return;c._skip=true;drawQR(c)})},150)});

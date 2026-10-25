@@ -24,11 +24,9 @@
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<main class="g" style="min-height:100vh;display:grid;place-content:center;gap:14px;text-align:center"><span class="wm" style="font-size:20px">ATL<b>A</b>S</span><p class="lede" style="margin-inline:auto" id="m">Opening the store&hellip;</p><p><a href="/" style="color:var(--goldtx)">atlasfitness.xyz</a></p></main>
+<main class="g" style="min-height:100vh;display:grid;place-content:center;gap:14px;text-align:center"><span class="wm" style="font-size:20px">ATL<b>A</b>S</span><p class="lede" style="margin-inline:auto">Opening the store&hellip;</p><p><a href="/" style="color:var(--goldtx)">atlasfitness.xyz</a></p></main>
 <script src="/assets/stores.js"></script>
 <script>(function(){var S=window.STORES||{},ua=navigator.userAgent||'',and=/Android/i.test(ua),ios=/iPhone|iPad|iPod/i.test(ua)||(/Macintosh/i.test(ua)&&navigator.maxTouchPoints>1);
-function L(k){return S[k]&&S[k].live&&S[k].url}
-var to=ios&&L('ios')?S.ios.url:and&&L('android')?S.android.url:ios?'/?notify=ios':and?'/?notify=android':L('ios')&&!and?S.ios.url:'/';
-location.replace(to)})();</script>
+location.replace(and&&S.android.url?S.android.url:ios&&S.ios.url?S.ios.url:'/')})();</script>
 </body>
 </html>

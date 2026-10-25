@@ -2,7 +2,7 @@
 
 > ATLAS is a strength-training log for iPhone and Android. You log every set for free; ATLAS reads your workouts and tells you which muscles are recovered, which you are neglecting, where push and pull are out of balance and which lifts have stalled. ATLAS PRO adds an AI workout planner and an AI coach that proposes changes you approve (every change can be undone).
 
-Status (25 October 2026): the iPhone app is coming soon; the Android app is in testing on Google Play. Both are free to download. There is no free trial and no ads.
+Status (25 October 2026): the iPhone app is the first to open to everyone and the Android app is in testing on Google Play. Both are free to download. There is no free trial and no ads.
 
 ## Pricing
 - Free: unlimited workout logging and history, recovery map, records, import from Strong or Hevy, CSV export.

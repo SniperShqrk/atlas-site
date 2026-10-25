@@ -279,4 +279,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .cta h2{font-size:clamp(30px,5vw,46px)}
 .cta .smart{width:100%;max-width:380px}
 /* a bigger code: about 7px per module so a phone camera reads it from a monitor */
-@media (min-width:900px){.qr{flex-direction:column;align-items:flex-start;gap:12px;max-width:none}.qr canvas{width:200px;padding:22px}}
+@media (min-width:900px){.qr{flex-direction:column;align-items:flex-start;gap:12px;max-width:none}.qr canvas{width:172px;padding:20px}}
+/* store badges: same height, no frame of our own (the official artwork carries its outline) */
+.badges{align-items:center;gap:14px}
+.bd{flex:none;height:52px;width:auto;display:block;line-height:0}
+.bd img{height:100%;width:auto;border-radius:0;box-shadow:none;display:block}
+.bd:not(.soon) img{box-shadow:none}
+.bd:focus-visible{border-radius:10px}
+@media (min-width:900px){.hero[class*=dh-] .badges{flex-direction:column;align-items:flex-start;gap:14px;max-width:none}.hero[class*=dh-] .bd{width:auto;height:56px}.dh-stack .badges{align-items:center}}
