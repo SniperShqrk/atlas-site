@@ -187,7 +187,7 @@
 <div class="wrap">
   <header class="masthead">
     <span class="wordmark">Atlas</span>
-    <span class="doc-meta">Last updated 16 October 2026</span>
+    <span class="doc-meta">Last updated 25 October 2026</span>
   </header>
 
   <main id="main">
@@ -263,8 +263,13 @@
         </tr>
         <tr>
           <td>Onboarding &amp; ATLAS Pro screen usage</td>
-          <td>Which steps of the first-run setup you saw and whether you skipped them, which version of the setup and of the ATLAS Pro screen you saw, the plan you picked, and whether you bought, restored or closed it, with the per-install identifier and, if you're signed in, your account id. If you delete your account, these records lose your account id.</td>
+          <td>Which steps of the first-run setup you saw and whether you skipped them, which version of the setup and of the ATLAS Pro screen you saw, the plan you picked, how long the screen was open in front of you (in seconds, counted only while the app is in the foreground), and whether you bought, restored or closed it, with the per-install identifier and, if you're signed in, your account id. If you delete your account, these records lose your account id.</td>
           <td>When the first-run setup or the ATLAS Pro screen opens. Stored with Supabase.</td>
+        </tr>
+        <tr>
+          <td>Website waitlist</td>
+          <td>The email address you type into "Notify me" on atlasfitness.xyz and whether you chose iPhone, Android or both. The website sets no cookies and has no analytics or ad trackers.</td>
+          <td>Only if you submit the form. Stored with Supabase.</td>
         </tr>
       </table>
     </div>
@@ -296,6 +301,7 @@
       <li><strong>To fix bugs:</strong> crash and error reports help us find and fix problems — they're not used for anything else.</li>
       <li><strong>To improve the app:</strong> counts of how the ATLAS Pro screen is used show which version explains Pro most clearly. They are never sold or used for advertising.</li>
       <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting, abuse prevention and counting how the ATLAS Pro screen is used rest on our legitimate interest in a stable, fair service and in improving the app; and the health-related information above is processed on your <strong>explicit consent</strong>, given in the app sheet and withdrawable in Profile → Privacy.</li>
+      <li><strong>To tell you when the app is available:</strong> a waitlist email is used only to send you one message when ATLAS opens on your platform, and is deleted after that message. Email support@atlasfitness.xyz to be removed sooner.</li>
       <li><strong>To prevent abuse:</strong> the anonymous device identifier stops one install from burning through the free AI quota in a way that would make it unsustainable to offer for free.</li>
     </ul>
   </section>
@@ -305,7 +311,7 @@
     <p>ATLAS relies on a small number of infrastructure providers to function. None of them are permitted to use your data for their own purposes — they process it only to provide the service ATLAS uses them for.</p>
     <ul>
       <li><strong>Supabase</strong> — hosts the database and handles account sign-in for anyone who creates an account.</li>
-      <li><strong>Onboarding and ATLAS Pro screen usage events</strong>, stored in Supabase — to compare two versions of the first-run setup and the ATLAS Pro screen, ATLAS records which steps you saw, whether you skipped them, which version of the screen you saw, the plan you chose, and whether you bought, restored or closed it. Each record carries the random per-install identifier and, if you are signed in, your account id. It does not include your injury notes, body weight or anything you typed. You can stop this in Profile → Privacy (Share crash reports and anonymous usage).</li>
+      <li><strong>Onboarding and ATLAS Pro screen usage events</strong>, stored in Supabase — to compare two versions of the first-run setup and the ATLAS Pro screen, ATLAS records which steps you saw, whether you skipped them, which version of the screen you saw, the plan you chose, how long the screen was open in front of you (counted only while the app is in the foreground, so we can tell a screen that was read from one that was skipped), and whether you bought, restored or closed it. We use this only to compare designs and decide which one to keep; it is not used for advertising and is not shared with advertisers. Each record carries the random per-install identifier and, if you are signed in, your account id. It does not include your injury notes, body weight or anything you typed. You can stop this in Profile → Privacy (Share crash reports and anonymous usage).</li>
       <li><strong>RevenueCat</strong> — manages subscription status. It receives your ATLAS account id (or, signed out, a random RevenueCat id) as the customer id, plus your purchase and subscription status. It does not receive your card details.</li>
       <li><strong>Apple</strong> — processes all payments on iPhone, and provides Sign in with Apple if you use it. ATLAS never sees or stores your payment details.</li>
           <li><strong>Google</strong> — on Android, processes all payments through Google Play billing, and provides Sign in with Google if you use it. ATLAS never sees or stores your payment details.</li>

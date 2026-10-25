@@ -1,0 +1,30 @@
+# Search engines and AI assistants that fetch a page when a person asks are allowed.
+# Crawlers that collect pages to train models are not (advisory: only honest bots obey).
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://atlasfitness.xyz/sitemap.xml
