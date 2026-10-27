@@ -187,7 +187,7 @@
 <div class="wrap">
   <header class="masthead">
     <span class="wordmark">Atlas</span>
-    <span class="doc-meta">Last updated 25 October 2026</span>
+    <span class="doc-meta">Last updated 27 October 2026</span>
   </header>
 
   <main id="main">
@@ -258,13 +258,18 @@
         </tr>
         <tr>
           <td>Device &amp; diagnostic data</td>
-          <td>A random, anonymous per-install identifier (not tied to your name or email), used to rate-limit AI features fairly and to count how the ATLAS Pro screen is used; crash reports and performance data if the app errors.</td>
+          <td>A random, anonymous per-install identifier (not tied to your name or email), used to apply the AI allowance and rate-limit AI features fairly, and to count how the ATLAS Pro screen is used; crash reports and performance data if the app errors.</td>
           <td>Automatically, for app stability and abuse prevention.</td>
         </tr>
         <tr>
           <td>Onboarding &amp; ATLAS Pro screen usage</td>
           <td>Which steps of the first-run setup you saw and whether you skipped them, which version of the setup and of the ATLAS Pro screen you saw, the plan you picked, how long the screen was open in front of you (in seconds, counted only while the app is in the foreground), and whether you bought, restored or closed it, with the per-install identifier and, if you're signed in, your account id. If you delete your account, these records lose your account id.</td>
           <td>When the first-run setup or the ATLAS Pro screen opens. Stored with Supabase.</td>
+        </tr>
+        <tr>
+          <td>AI allowance counters</td>
+          <td>For the random per-install identifier only: how many free AI coach messages were used, when the current ATLAS PRO period began, and how much of its allowance has been used (a number). No message text, plan or photo is kept for this, and it is not tied to your name or email.</td>
+          <td>Each time you use the AI Coach, AI Planner or Import Workouts. Stored with Supabase.</td>
         </tr>
       </table>
     </div>
@@ -296,7 +301,7 @@
       <li><strong>To fix bugs:</strong> crash and error reports help us find and fix problems — they're not used for anything else.</li>
       <li><strong>To improve the app:</strong> counts of how the ATLAS Pro screen is used show which version explains Pro most clearly. They are never sold or used for advertising.</li>
       <li><strong>Legal basis (EU/UK):</strong> running the app and your subscription is necessary to provide the service you asked for; crash reporting, abuse prevention and counting how the ATLAS Pro screen is used rest on our legitimate interest in a stable, fair service and in improving the app; and the health-related information above is processed on your <strong>explicit consent</strong>, given in the app sheet and withdrawable in Profile → Privacy.</li>
-      <li><strong>To prevent abuse:</strong> the anonymous device identifier stops one install from burning through the free AI quota in a way that would make it unsustainable to offer for free.</li>
+      <li><strong>To apply the AI allowance and prevent abuse:</strong> the anonymous device identifier lets us count the free AI coach messages and the ATLAS PRO allowance for an install, so that no install can use the AI without limit. That keeps a free tier sustainable.</li>
     </ul>
   </section>
 
@@ -312,7 +317,7 @@
       <li><strong>Sentry</strong> — receives crash and error reports and light performance data. Reports are scrubbed in the app before they are sent: no request contents, no text you typed, no email, IP address or device name. On by default; you can turn it off in Profile → Privacy.</li>
       <li><strong>Expo (Expo Application Services)</strong> — delivers app updates. When the app checks for an update, Expo receives your IP address, your device's operating system, the app version and the update it already has. It receives no training data.</li>
       <li><strong>Anthropic</strong> — the AI provider (Claude models) behind the AI Planner, AI Coach and Import Workouts. It receives the specific content of your request, your goal and equipment, injury notes, body weight if provided, and a summary of your recent training, solely to generate the response you asked for. Anthropic processes this to answer the request, under its API terms. ATLAS does not send it your name or email.</li>
-      <li><strong>Render</strong> — hosts the ATLAS server that relays AI requests. It keeps a per-install counter for the daily AI limits and its logs include request IP addresses.</li>
+      <li><strong>Render</strong> — hosts the ATLAS server that relays AI requests. It keeps a per-install counter for the free daily plan limit and short-lived pacing counters in memory, and its logs include request IP addresses.</li>
       <li><strong>GitHub</strong> — stores our encrypted nightly database backups (see Section 5), and hosts this website (atlasfitness.xyz) on GitHub Pages. Backups are encrypted before they reach GitHub with a key GitHub does not hold, so GitHub cannot read them. Like any web host, GitHub Pages may log visitors' IP addresses. This website sets no cookies, runs no analytics or advertising trackers, and loads no third-party fonts or scripts, so it needs no cookie banner.</li>
     </ul>
     <p>We don't sell your data, and we don't share it with anyone for their marketing or advertising purposes.</p>
@@ -332,7 +337,7 @@
       <li><strong>AI requests:</strong> ATLAS does not store what you send to or receive from the AI Coach, plans or import. The AI provider keeps API inputs and outputs for up to 30 days, then deletes them, except where a request is flagged for a policy violation (kept longer) or the law requires it.</li>
       <li><strong>Crash reports (Sentry):</strong> up to 30 days, the free-plan default.</li>
       <li><strong>Usage events (onboarding and ATLAS Pro screen):</strong> 12 months, then deleted. Records not tied to an account are kept as anonymous statistics.</li>
-      <li><strong>AI limit counters (Render):</strong> reset when the server restarts and are not kept long term.</li>
+      <li><strong>AI allowance counters (Supabase):</strong> the per-install record described in Section 1 is kept while the install is in use, deleted if the install is unused for 365 days, and deleted when you delete your account. The server's daily plan counter (Render) resets when the server restarts and is not kept long term.</li>
       <li><strong>Update checks (Expo) and website logs (GitHub):</strong> kept per those providers' own retention.</li>
       <li><strong>Backups:</strong> we take an encrypted backup of our database once a day so data can be recovered after an outage or mistake. Each backup is kept for 30 days and then deleted automatically. When you delete your account, your data is removed from the live database immediately and disappears from backups within 30 days as the older backups expire. A backup is only ever used to restore the service, not to bring back an account you deleted.</li>
     </ul>
@@ -343,7 +348,7 @@
     <ul>
       <li><strong>Export:</strong> ATLAS includes a free, full CSV export of your training history at any time, from Progress → Your Data.</li>
       <li><strong>Access or correction:</strong> email us and we'll confirm exactly what's on file for your account.</li>
-      <li><strong>Deletion:</strong> in the app, go to Profile → Delete account. It permanently removes your account, profile, workouts, routines, custom exercises, body weight entries and training backup from our database, immediately. It also revokes ATLAS's Sign in with Apple access (if you used it) and deletes your RevenueCat customer record (your purchase history and customer id). Both are attempted first and, if either cannot be reached at that moment, the account is deleted anyway. Deleting your account does not cancel an active subscription; cancel it in your Apple ID settings, or in Google Play → Subscriptions on Android. If you used Sign in with Google, you can also remove ATLAS's access in your Google Account under Security → Your connections to third-party apps &amp; services. It does not remove:
+      <li><strong>Deletion:</strong> in the app, go to Profile → Delete account. It permanently removes your account, profile, workouts, routines, custom exercises, body weight entries, training backup and AI allowance counters from our database, immediately. It also revokes ATLAS's Sign in with Apple access (if you used it) and deletes your RevenueCat customer record (your purchase history and customer id). Both are attempted first and, if either cannot be reached at that moment, the account is deleted anyway. Deleting your account does not cancel an active subscription; cancel it in your Apple ID settings, or in Google Play → Subscriptions on Android. If you used Sign in with Google, you can also remove ATLAS's access in your Google Account under Security → Your connections to third-party apps &amp; services. It does not remove:
         <ul>
           <li><strong>Crash reports already in Sentry.</strong> They contain no name, email or IP address and expire on Sentry's retention schedule above.</li>
           <li><strong>Anonymous device usage events.</strong> Onboarding and ATLAS Pro screen records lose your account id when you delete your account, but stay under the random per-install identifier, which is not linked to your name or email. Deleting the app does not remove them; email us to have them deleted by device identifier.</li>
