@@ -1,6 +1,6 @@
 # ATLAS
 
-> ATLAS is a strength-training log for iPhone and Android. You log every set for free; ATLAS reads your workouts and tells you which muscles are recovered, which you are neglecting, where push and pull are out of balance and which lifts have stalled. ATLAS PRO adds an AI workout planner and an AI coach that proposes changes you approve (every change can be undone).
+> ATLAS is a strength-training log for iPhone and Android. You log every set for free; ATLAS reads your workouts and tells you which muscles are recovered, which you are neglecting, where push and pull are out of balance and which lifts have stalled. The AI coach, free to try with 10 messages, proposes changes you approve (every change can be undone). ATLAS PRO adds an AI workout planner and about 250 coach messages a month.
 
 Status (25 October 2026): the iPhone app is the first to open to everyone and the Android app is in testing on Google Play. Both are free to download. There is no free trial and no ads.
 
@@ -8,7 +8,7 @@ ATLAS is created by Hugo Sheehan, an independent developer.
 
 ## Pricing
 - Free: unlimited workout logging and history, recovery map, records, import from Strong or Hevy, CSV export.
-- ATLAS PRO: EUR 4.99 a month or EUR 29.99 a year (your store shows your currency). Full diagnosis, AI planner, AI coach, strength charts.
+- ATLAS PRO: EUR 4.99 a month or EUR 29.99 a year (your store shows your currency). Full diagnosis, AI planner, about 250 AI coach messages a month, strength charts.
 
 ## Pages
 - [Home](https://atlasfitness.xyz/): what ATLAS does, pricing and questions.
