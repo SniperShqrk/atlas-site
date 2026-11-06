@@ -8,7 +8,7 @@ ATLAS is created by Hugo Sheehan, an independent developer.
 
 ## Pricing
 - Free: unlimited workout logging and history, recovery map, records, import from Strong or Hevy, CSV export.
-- ATLAS PRO: EUR 4.99 a month or EUR 29.99 a year (your store shows your currency). Full diagnosis, AI planner, about 250 AI coach messages a month, strength charts.
+- ATLAS PRO: EUR 4.99 a month or EUR 29.99 a year (your store shows your currency). Full diagnosis, AI planner, about 250 AI coach messages a month, strength charts beyond 90 days (the last 90 days are free).
 
 ## Pages
 - [Home](https://atlasfitness.xyz/): what ATLAS does, pricing and questions.
