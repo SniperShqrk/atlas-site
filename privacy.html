@@ -187,7 +187,7 @@
 <div class="wrap">
   <header class="masthead">
     <span class="wordmark">Atlas</span>
-    <span class="doc-meta">Last updated 27 October 2026</span>
+    <span class="doc-meta">Last updated 13 November 2026</span>
   </header>
 
   <main id="main">
@@ -267,6 +267,11 @@
           <td>When the first-run setup or the ATLAS Pro screen opens. Stored with Supabase.</td>
         </tr>
         <tr>
+          <td>Retention counts and reminders</td>
+          <td>Whether you opened the app on a given day and how many days it has been since you first opened it, whether you opened the app from an ATLAS reminder, and whether the system notification setting for ATLAS changed (granted, denied or not yet asked). These carry the random per-install identifier and, if you're signed in, your account id. Reminders are scheduled on your device only (local notifications): no push-notification token is collected and nothing is sent to your device from our servers. They are on by default if you set a reminder time in setup, and you can change or turn them off in Profile, or in your device's notification settings.</td>
+          <td>Once a day when you open the app, when you open the app from a reminder, and when the notification setting changes. Stored with Supabase.</td>
+        </tr>
+        <tr>
           <td>AI allowance counters</td>
           <td>For a free account, tied to your account id (a random identifier, not your name or email): how many free AI coach messages were used. For ATLAS PRO, tied to the random per-install identifier: when the current period began and how much of its allowance has been used (a number). No message text, plan or photo is kept for this.</td>
           <td>Each time you use the AI Coach, AI Planner or Import Workouts. Stored with Supabase.</td>
@@ -317,7 +322,7 @@
       <li><strong>Sentry</strong> — receives crash and error reports and light performance data. Reports are scrubbed in the app before they are sent: no request contents, no text you typed, no email, IP address or device name. On by default; you can turn it off in Profile → Privacy.</li>
       <li><strong>Expo (Expo Application Services)</strong> — delivers app updates. When the app checks for an update, Expo receives your IP address, your device's operating system, the app version and the update it already has. It receives no training data.</li>
       <li><strong>Anthropic</strong> — the AI provider (Claude models) behind the AI Planner, AI Coach and Import Workouts. It receives the specific content of your request, your goal and equipment, injury notes, body weight if provided, and a summary of your recent training, solely to generate the response you asked for. Anthropic processes this to answer the request, under its API terms. ATLAS does not send it your name or email.</li>
-      <li><strong>Render</strong> — hosts the ATLAS server that relays AI requests. It keeps a per-install counter for the free daily plan limit and short-lived pacing counters in memory, and its logs include request IP addresses.</li>
+      <li><strong>Render</strong> — hosts the ATLAS server that relays AI requests. It keeps short-lived pacing counters in memory, and its logs include request IP addresses.</li>
       <li><strong>GitHub</strong> — stores our encrypted nightly database backups (see Section 5), and hosts this website (atlasfitness.xyz) on GitHub Pages. Backups are encrypted before they reach GitHub with a key GitHub does not hold, so GitHub cannot read them. Like any web host, GitHub Pages may log visitors' IP addresses. This website sets no cookies, runs no analytics or advertising trackers, and loads no third-party fonts or scripts, so it needs no cookie banner.</li>
     </ul>
     <p>We don't sell your data, and we don't share it with anyone for their marketing or advertising purposes.</p>
@@ -336,8 +341,8 @@
       <li><strong>On your device:</strong> kept until you delete the app or sign out (signing out clears this device's copy).</li>
       <li><strong>AI requests:</strong> ATLAS does not store what you send to or receive from the AI Coach, plans or import. The AI provider keeps API inputs and outputs for up to 30 days, then deletes them, except where a request is flagged for a policy violation (kept longer) or the law requires it.</li>
       <li><strong>Crash reports (Sentry):</strong> up to 30 days, the free-plan default.</li>
-      <li><strong>Usage events (onboarding and ATLAS Pro screen):</strong> 12 months, then deleted. Records not tied to an account are kept as anonymous statistics.</li>
-      <li><strong>AI allowance counters (Supabase):</strong> the record described in Section 1 (per account for the free coach messages, per install for ATLAS PRO) is kept while it is in use, deleted if unused for 365 days, and deleted when you delete your account. The server's daily plan counter (Render) resets when the server restarts and is not kept long term.</li>
+      <li><strong>Usage events (onboarding, ATLAS Pro screen and retention counts):</strong> 12 months, then deleted. Records not tied to an account are kept as anonymous statistics.</li>
+      <li><strong>AI allowance counters (Supabase):</strong> the record described in Section 1 (per account for the free coach messages, per install for ATLAS PRO) is kept while it is in use, deleted if unused for 365 days, and deleted when you delete your account.</li>
       <li><strong>Update checks (Expo) and website logs (GitHub):</strong> kept per those providers' own retention.</li>
       <li><strong>Backups:</strong> we take an encrypted backup of our database once a day so data can be recovered after an outage or mistake. Each backup is kept for 30 days and then deleted automatically. When you delete your account, your data is removed from the live database immediately and disappears from backups within 30 days as the older backups expire. A backup is only ever used to restore the service, not to bring back an account you deleted.</li>
     </ul>
